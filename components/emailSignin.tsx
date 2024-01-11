@@ -46,14 +46,14 @@ const EmailSignin = () => {
     >
       <input
         placeholder="Email address"
-        className="h-12 w-1/5 rounded-lg mx-auto p-2 border"
+        className="h-12 md:w-1/5 w-3/4 rounded-lg mx-auto p-2 border"
         type="email"
         onChange={(e) => {
           setemail(e.target.value);
         }}
         value={email}
       />
-      <button className="bg-[#10A37F] h-14 mt-4 w-1/5 rounded-lg mx-auto text-white">
+      <button className="bg-[#10A37F] h-14 mt-4 md:w-1/5 w-3/4 rounded-lg mx-auto text-white">
         Submit
       </button>
       {check && (

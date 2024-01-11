@@ -21,7 +21,7 @@ const GoogleSignin = () => {
   return (
     <div className="mt-4 w-full">
       <button
-        className="flex mx-auto p-3 border border-gray-400 rounded-lg w-1/5 text-center hover:bg-gray-100 transition ease-in-out"
+        className="flex mx-auto p-3 border border-gray-400 rounded-lg lg:w-1/5 w-3/4 text-center hover:bg-gray-100 transition ease-in-out"
         onClick={handleGoogleSiginin}
       >
         <Image
