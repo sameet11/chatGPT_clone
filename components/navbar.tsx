@@ -1,16 +1,21 @@
+"use client";
 import { FaRegEdit } from "react-icons/fa";
 import { GiHamburgerMenu } from "react-icons/gi";
-
+import useChatStore from "@/store/useChat";
 const Navbar = () => {
+  const { setToggle } = useChatStore();
+  const handleClick = () => {
+    setToggle();
+  };
   return (
     <div className="flex justify-between p-2 lg:hidden grey">
-      <div>
+      <button onClick={handleClick}>
         <GiHamburgerMenu />
-      </div>
+      </button>
       <div>New chat</div>
-      <div>
+      <button>
         <FaRegEdit />
-      </div>
+      </button>
     </div>
   );
 };

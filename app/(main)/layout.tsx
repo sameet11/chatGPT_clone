@@ -10,25 +10,23 @@ export default function RootLayout({
   return (
     <div className="main h-screen flex flex-col">
       {/* Main content */}
-      <div className=" h-screen flex">
+      <div className=" h-full flex">
         {/* Sidebar section */}
-        <div className="lg:w-1/6 lg:block lg:shadow-lg hidden bg-black">
-          <Sidebar />
-        </div>
+        <Sidebar />
         {/* Main chat section */}
         <div className="lg:w-5/6 w-screen text-white main-chat">
           {/*navbar for phone screen*/}
           <Navbar />
           {/*main section*/}
-          <div className="w-full h-full px-4 py-2 flex flex-col">
+          <div className="w-full h-full px-4 py-2 flex flex-col main-chat">
             {children}
             {/* input*/}
             <div>
-              <div className=" h-1/6 bottom-0 w-full">
+              <div className=" h-1/6 w-full">
                 <div className="lg:w-2/3 mt-4 mx-auto">
                   <Prompt />
                 </div>
-                <div className="m-2">
+                <div className="m-1">
                   <Disclaimer />
                 </div>
               </div>

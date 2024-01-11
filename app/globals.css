@@ -14,12 +14,12 @@
 .bg-left-auth{
     background-color: #00002E;
 }
-.auth-text{
-    color: #D287E4;
-}
 .btn-auth-clr{
     background-color: #3C46FF;
 }
 .btn-auth-clr:hover{
     background-color:#0000FF;
+}
+.border-p{
+    border: 2px solid #494A54;
 }

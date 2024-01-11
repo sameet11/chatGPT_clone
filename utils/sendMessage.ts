@@ -13,7 +13,6 @@ const sendMessage = async (newChat: ChatCompletion, chat: ChatCompletion[]) => {
 
         if (response.ok) {
             const responseData = await response.json();
-            console.log('Server response:', responseData);
             return responseData;
         } else {
             throw new Error('Failed to fetch data from the server');
