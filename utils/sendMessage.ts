@@ -15,11 +15,10 @@ const sendMessage = async (newChat: ChatCompletion, chat: ChatCompletion[]) => {
             const responseData = await response.json();
             return responseData;
         } else {
-            throw new Error('Failed to fetch data from the server');
+            throw new Error("server error")
         }
     } catch (error) {
-        console.error('Error:', error);
-        throw new Error('Something went wrong')
+        throw new Error("something went wrong");
     }
 };
 

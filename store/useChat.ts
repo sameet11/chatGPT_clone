@@ -6,6 +6,8 @@ type State = {
     isLoading: boolean,
     Toggle: boolean,
     conversationID: string,
+    responseError: boolean,
+
 
 }
 
@@ -15,6 +17,7 @@ type Actions = {
     setToggle: () => void,
     clearChat: () => void,
     setconversationID: (convoID: string) => void,
+    setResponseError: (val: boolean) => void,
 }
 
 const useChatStore = create<State & Actions>((set) => ({
@@ -27,6 +30,7 @@ const useChatStore = create<State & Actions>((set) => ({
     isLoading: false,
     Toggle: false,
     conversationID: "",
+    responseError: false,
     setChat: (c: ChatCompletion) => set((state) => ({ chat: [...state.chat, c] })),
     setIsLoading: (val: boolean) => set(() => ({ isLoading: val })),
     setToggle: () => set((state) => ({ Toggle: !state.Toggle })),
@@ -38,7 +42,8 @@ const useChatStore = create<State & Actions>((set) => ({
             },
         ]
     })),
-    setconversationID: (convoID: string) => set(() => ({ conversationID: convoID }))
+    setconversationID: (convoID: string) => set(() => ({ conversationID: convoID })),
+    setResponseError: (val: boolean) => set(() => ({ responseError: val }))
 }))
 
 export default useChatStore;

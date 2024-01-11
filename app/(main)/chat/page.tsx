@@ -6,7 +6,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import ReactMarkdown from "react-markdown";
 
 export default function Chat() {
-  const { chat, isLoading } = useChatStore();
+  const { chat, isLoading, responseError } = useChatStore();
   const containerRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
@@ -77,6 +77,12 @@ export default function Chat() {
               <Skeleton className="h-4 w-[150px]" />
               <Skeleton className="h-4 w-[250px]" />
             </div>
+          </div>
+        )}
+        {responseError && (
+          <div className="bg-red-500 text-white p-4 rounded-md">
+            <p className="font-bold">Error:</p>
+            <p>Plz try again.Server Error!</p>
           </div>
         )}
       </div>

@@ -16,7 +16,8 @@ const Prompt = () => {
     setChat,
     setIsLoading,
     conversationID,
-    setconversationID, // Corrected setConversationID function name
+    setconversationID,
+    setResponseError, // Corrected setConversationID function name
   } = useChatStore();
 
   const supabase = createClientComponentClient<Database>();
@@ -36,9 +37,9 @@ const Prompt = () => {
       setChat(newChat);
       setIsLoading(false);
       router.push("/chat");
-
+      setResponseError(false);
       const responseData = await sendMessage(newChat, chat);
-      const { message, data } = responseData;
+      const { message, data, error } = responseData;
       let convoID: string = "";
       if (data) {
         const {
@@ -92,8 +93,8 @@ const Prompt = () => {
       setIsLoading(true);
       setChat(message);
     } catch (error) {
-      console.error("Error:", error);
-      throw new Error("Message could not be sent");
+      setIsLoading(true);
+      setResponseError(true);
     }
   };
 

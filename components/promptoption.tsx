@@ -23,6 +23,7 @@ const PromptOption: React.FC<promptOptionProps> = ({ arr }) => {
     clearChat,
     conversationID,
     setconversationID,
+    setResponseError,
   } = useChatStore();
   const supabase = createClientComponentClient<Database>();
 
@@ -50,6 +51,7 @@ const PromptOption: React.FC<promptOptionProps> = ({ arr }) => {
       setChat(newChat);
       setIsLoading(false);
       router.push("/chat");
+      setResponseError(false);
       const responseData = await sendMessage(newChat, chat);
       const { message, data } = responseData;
       let convoID: string = "";
@@ -105,7 +107,8 @@ const PromptOption: React.FC<promptOptionProps> = ({ arr }) => {
       setIsLoading(true);
       setChat(message);
     } catch (error) {
-      throw new Error("something went wrong");
+      setIsLoading(true);
+      setResponseError(true);
     }
   };
 

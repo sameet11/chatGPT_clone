@@ -1,6 +1,6 @@
 import React from "react";
 import PromptOption from "./promptoption";
-import { type prompOption } from "@/types";
+import type { prompOption } from "@/types";
 const SuggestedPrompts = () => {
   const arr: prompOption = [
     {

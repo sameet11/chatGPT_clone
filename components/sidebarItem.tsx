@@ -10,11 +10,13 @@ interface SidebarItemProps {
 }
 const SidebarItem: React.FC<SidebarItemProps> = ({ convo }) => {
   const router = useRouter();
-  const { clearChat, setChat, setconversationID } = useChatStore();
+  const { clearChat, setChat, setconversationID, setIsLoading } =
+    useChatStore();
   const supabase = createClientComponentClient<Database>();
   const handleConversation = async (id: string) => {
     clearChat();
     router.push("/chat");
+    setIsLoading(true);
     const { data: messageData, error: messageError } = await supabase
       .from("messages")
       .select("*")
