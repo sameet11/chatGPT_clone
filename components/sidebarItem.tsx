@@ -38,14 +38,14 @@ const SidebarItem: React.FC<SidebarItemProps> = ({ convo }) => {
     <div>
       {convo?.map((prompt) => (
         <div
-          className="flex flex-col items-start overflow-y-auto"
+          className="flex flex-col items-start overflow-y-auto overflow-hidden"
           key={prompt.id}
           onClick={() => {
             handleConversation(prompt.id);
           }}
         >
           <div
-            className="h-10 text-white hover rounded-lg p-2 overflow-hidden whitespace-nowrap overflow-ellipsis m-3 w-[230px] text-sm" // Set your desired width here
+            className="h-10 text-white hover rounded-lg p-2 overflow-hidden whitespace-nowrap overflow-ellipsis w-[210px] m-3 text-sm" // Set your desired width here
           >
             <h1>{prompt.name}</h1>
           </div>
