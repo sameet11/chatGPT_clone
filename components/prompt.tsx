@@ -7,6 +7,7 @@ import useChatStore from "@/store/useChat";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import toast from "react-hot-toast";
 import type { Database } from "@/database_types";
+import { twMerge } from "tailwind-merge";
 
 const Prompt = () => {
   const [prompt, setPrompt] = useState<string>("");
@@ -17,7 +18,8 @@ const Prompt = () => {
     setIsLoading,
     conversationID,
     setconversationID,
-    setResponseError, // Corrected setConversationID function name
+    setResponseError,
+    Toggle, // Corrected setConversationID function name
   } = useChatStore();
 
   const supabase = createClientComponentClient<Database>();
@@ -101,7 +103,10 @@ const Prompt = () => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="relative w-full flex items-center justify-end"
+      className={twMerge(
+        `relative w-full flex items-center justify-end`,
+        Toggle && "hidden"
+      )}
     >
       <input
         type="text"

@@ -4,7 +4,7 @@ export default function Home() {
   return (
     <div>
       <div className="font-bold text-xl">ChatGPT</div>
-      <div className="mt-[200px]">
+      <div className="mt-[100px]">
         {/* Chatbot profile image */}
         <div>
           <Image

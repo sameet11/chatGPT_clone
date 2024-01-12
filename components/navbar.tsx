@@ -2,13 +2,22 @@
 import { FaRegEdit } from "react-icons/fa";
 import { GiHamburgerMenu } from "react-icons/gi";
 import useChatStore from "@/store/useChat";
+import { twMerge } from "tailwind-merge";
+
 const Navbar = () => {
-  const { setToggle } = useChatStore();
+  const { setToggle, Toggle } = useChatStore();
+
   const handleClick = () => {
-    setToggle();
+    setToggle(true); // Assuming Toggle is a boolean state
   };
   return (
-    <div className="flex justify-between p-2 lg:hidden grey">
+    <div
+      className={twMerge(
+        `flex justify-between p-2 lg:hidden
+  `,
+        Toggle && "hidden"
+      )}
+    >
       <button onClick={handleClick}>
         <GiHamburgerMenu />
       </button>

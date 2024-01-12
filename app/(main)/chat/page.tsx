@@ -4,9 +4,10 @@ import useChatStore from "@/store/useChat";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Skeleton } from "@/components/ui/skeleton";
 import ReactMarkdown from "react-markdown";
+import { twMerge } from "tailwind-merge";
 
 export default function Chat() {
-  const { chat, isLoading, responseError } = useChatStore();
+  const { chat, isLoading, responseError, Toggle } = useChatStore();
   const containerRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
@@ -19,7 +20,10 @@ export default function Chat() {
     }
   }, [chat]);
   return (
-    <div className="h-5/6 overflow-y-auto" ref={containerRef}>
+    <div
+      className={twMerge(`h-5/6 overflow-y-auto`, Toggle && "hidden")}
+      ref={containerRef}
+    >
       <div className="lg:mx-52 xl:mx-64 mt-5">
         {chat.length === 0 ? (
           <div>Loading...</div>

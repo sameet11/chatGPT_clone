@@ -120,7 +120,7 @@ const PromptOption: React.FC<promptOptionProps> = ({ arr }) => {
           <button
             onClick={() => handleClick(ele.h1, ele.p)}
             key={index}
-            className="border-p  rounded-xl m-2 p-1 hover text-start"
+            className="border-p rounded-xl m-2 p-1 hover text-start"
           >
             <h1 className="text-gray-300 font-semibold text-sm">{ele.h1}</h1>
             <p className="text-gray-500 text-sm">{ele.p}</p>

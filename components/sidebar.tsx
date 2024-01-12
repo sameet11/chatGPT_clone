@@ -9,11 +9,15 @@ import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 import SidebarItem from "./sidebarItem";
+import { twMerge } from "tailwind-merge";
+import useChatStore from "@/store/useChat";
 
 const Sidebar = () => {
   const supabase = createClientComponentClient<Database>();
   const router = useRouter();
   const [convo, setconvo] = useState<conversation[] | null>(null);
+  const { Toggle } = useChatStore();
+
   useEffect(() => {
     const checkUserSession = async () => {
       try {
@@ -28,6 +32,7 @@ const Sidebar = () => {
         console.error("Error checking user session:", error);
       }
     };
+
     const fetchData = async () => {
       try {
         const {
@@ -50,15 +55,23 @@ const Sidebar = () => {
     checkUserSession();
     fetchData();
   }, [router, supabase, convo]);
+
   const handlClick = async () => {
     const { error } = await supabase.auth.signOut();
     if (error) {
-      toast.error("try again!");
+      toast.error("Try again!");
     }
     router.replace("/auth/login");
   };
+
   return (
-    <div className="lg:w-1/6 lg:block lg:shadow-lg hidden bg-black">
+    <div
+      className={twMerge(
+        `lg:w-1/6 lg:block lg:shadow-lg hidden bg-black z-10 h-full`,
+        Toggle && "block",
+        Toggle && "w-5/6"
+      )}
+    >
       <div className="flex hover rounded-lg m-3 items-center relative">
         <div className="p-1">
           {/* Logo image */}
@@ -77,7 +90,7 @@ const Sidebar = () => {
         </div>
       </div>
       <SidebarItem convo={convo} />
-      <div className="absolute bottom-0 w-1/6">
+      <div className="absolute bottom-0 md:w-1/6">
         <div
           className="h-10 text-white hover rounded-lg flex items-center m-3 p-2 justify-between bg-gray-800"
           onClick={handlClick}
