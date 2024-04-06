@@ -27,7 +27,7 @@ export async function POST(req: Request) {
             }]
             const completion = await openai.chat.completions.create({
                 messages: [...updatedChat, ...newChat],
-                model: "gpt-3.5-turbo-1106",
+                model: "gpt-4",
             });
             data = completion.choices[0].message.content;
             if (data) {
@@ -37,7 +37,7 @@ export async function POST(req: Request) {
 
         const completion = await openai.chat.completions.create({
             messages: updatedChat,
-            model: "gpt-3.5-turbo-1106",
+            model: "gpt-4",
         });
         const responseData = {
             message: completion.choices[0].message,
